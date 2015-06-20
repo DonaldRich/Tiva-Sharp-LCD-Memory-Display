@@ -5,7 +5,7 @@
 //     Memory is minimized by limiting the characters in the font and not
 //     supporting general purpose graphics.
 //
-// Copyright (c) 2015 Donald Bryant-Rich.
+// Copyright (c) 2015 Donald Rich.
 //
 // This software is supplied solely as a programming example.
 //
@@ -27,13 +27,10 @@
 //
 //*****************************************************************************
 
-#include <stdint.h>
-#include <stdbool.h>
 #include "inc/hw_memmap.h"
 #include "inc/hw_types.h"
 #include "driverlib/gpio.h"
 #include "driverlib/ssi.h"
-#include "driverlib/sysctl.h"
 #include "driverlib/systick.h"
 
 #include "SharpLcdMemoryDisplay.h"
@@ -480,6 +477,8 @@ Sharp96x96_InitDisplay(void)
 	SSIClockSourceSet(LCD_SSI_BASE, SSI_CLOCK_SYSTEM);
 	SSIConfigSetExpClk(LCD_SSI_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0,
 			SSI_MODE_MASTER, 1000000, 8);
+    GPIOPinConfigure(GPIO_PB7_SSI2TX);
+    GPIOPinConfigure(GPIO_PB4_SSI2CLK);
 	// Split if SPI_SI and SPI_CLK are on different GPIO ports.
     GPIOPinTypeGPIOOutput(LCD_SPI_SI_PORT_BASE, LCD_SPI_SI_PIN | LCD_SPI_CLK_PIN);
 	GPIOPinTypeSSI(LCD_SPI_SI_PORT_BASE, LCD_SPI_SI_PIN | LCD_SPI_CLK_PIN);

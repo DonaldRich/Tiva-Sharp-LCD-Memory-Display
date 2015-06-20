@@ -6,7 +6,7 @@
 //     Memory use is minimized by limiting the characters in the font and not
 //     supporting general purpose graphics.
 //
-// Copyright (c) 2015 Donald Bryant-Rich.
+// Copyright (c) 2015 Donald Rich.
 //
 // This software is supplied solely as a programming example.
 //
